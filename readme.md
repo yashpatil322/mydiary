@@ -29,25 +29,6 @@ MyDiary is a secure, personal online diary web app that lets users write and sto
 - **Hosting**: [InfinityFree.net](https://infinityfree.net)
 
 ---
-## 📁 Project Structure
-
-├── index.php
-├── register.php
-├── login.php
-├── backend/
-│ ├── db.php
-│ ├── helpers/
-│ │ └── encryption.php
-│ └── dashboard/
-│ ├── dashboard.php
-│ ├── save_entry.php
-│ └── dashboard.css
-├── paper.php
-├── entries.php
-└── imgs/
-└── (CSS / JS / Images as needed)
-
----
 
 ## ⚙️ Setup Instructions (Local or Hosting)
 
