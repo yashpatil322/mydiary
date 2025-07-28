@@ -2,7 +2,7 @@
 // /helpers/encryption.php
 
 // Define your master key (in production, retrieve from a secure location or env variable)
-define('MASTER_KEY', 'T8@vM!dN#zWqR1$eX5pLk9^JgHuA*2Bs'); // Must be 32 characters for AES-256
+define('MASTER_KEY',); // Must be 32 characters for AES-256
 
 function encryptData($plaintext) {
     $key = MASTER_KEY;
