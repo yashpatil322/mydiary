@@ -1,0 +1,178 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Diary Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-pink: #f8c6d8;
+      --light-pink: #ffe6ee;
+      --dark-pink: #e89bbf;
+      --text-dark: #333;
+      --white: #fff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--light-pink);
+      color: var(--text-dark);
+    }
+
+    /* Top navbar */
+    .navbar {
+      background-color: var(--main-pink);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      display: block;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: var(--main-pink);
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #f5a9c4;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--dark-pink);
+      color: white;
+    }
+
+    .sidebar.show {
+      left: 0;
+    }
+
+    /* Content */
+    .content {
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .entry {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .entry:hover {
+      background-color: #fff0f5;
+    }
+
+    .entry-date {
+      font-weight: bold;
+      color: var(--dark-pink);
+      margin-bottom: 0.5rem;
+    }
+
+    .entry-preview {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .entry-full {
+      display: none;
+      margin-top: 1rem;
+      color: #444;
+    }
+
+    .entry.open .entry-full {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .menu-icon {
+        display: none;
+      }
+
+      .sidebar {
+        left: 0;
+        padding-top: 4rem;
+      }
+
+      .content {
+        margin-left: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    <h2>My Diary</h2>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <a href="#">📋 Dashboard</a>
+    <a href="#">⚙️ Settings</a>
+    <a href="#">🗑️ Deleted Entries</a>
+    <a href="#">🚪 Logout</a>
+  </div>
+
+  <div class="content">
+    <div class="entry" onclick="toggleEntry(this)">
+      <div class="entry-date">20 July 2025</div>
+      <div class="entry-preview">Today was a beautiful day...</div>
+      <div class="entry-full">Today was a beautiful day. I learned so much while working on my diary project!</div>
+    </div>
+
+    <div class="entry" onclick="toggleEntry(this)">
+      <div class="entry-date">19 July 2025</div>
+      <div class="entry-preview">A quiet, peaceful Sunday with some rain...</div>
+      <div class="entry-full">A quiet, peaceful Sunday with some rain. I stayed in and did some journaling.</div>
+    </div>
+
+    Add more entries similarly 
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("show");
+    }
+
+    function toggleEntry(el) {
+      el.classList.toggle("open");
+    }
+  </script>
+
+</body>
+</html> -->
