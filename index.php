@@ -137,14 +137,16 @@
     }
 
     body {
-      background-image: url(imgs/evileye.jpeg);
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--beige);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
       body::before {
         content: "";
@@ -276,6 +278,22 @@
       <button class="btn login" onclick="location.href='login.html'">Existing User</button>
     </div>
   </div>
+<script>
+  const bgImages = [
+    'imgs/evileye1.jpeg',
+    'imgs/evileye2.jpeg',
+    'imgs/evileye3.jpeg',
+    'imgs/evileye4.jpeg',
+    'imgs/evileye5.jpeg',
+    'imgs/evileye6.jpeg',
+    'imgs/evileye7.jpeg',
+    'imgs/evileye8.jpeg'
+  ];
+
+  const randomIndex = Math.floor(Math.random() * bgImages.length);
+  document.body.style.backgroundImage = `url('${bgImages[randomIndex]}')`;
+</script>
+
 </body>
 </html>
 
