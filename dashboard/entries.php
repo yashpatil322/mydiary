@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once 'helpers/encryption.php';
-require_once '../db.php'; // your DB connection file
+require_once __DIR__ . '/helpers/encryption.php';   // Inside dashboard/helpers/
+require_once __DIR__ . '/../db.php';                // One level up to root
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../loginfrontend.php?error=" . urlencode("Please log in first"));
+    header("Location: https://mydiary.gt.tc/loginfrontend.php?error=" . urlencode("Please log in first"));
     exit();
 }
 
@@ -40,6 +40,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
     <meta charset="UTF-8">
     <title>Your Diary Entries</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -195,8 +196,10 @@ while ($row = $result->fetch_assoc()) {
   </div>
 
   <div class="sidebar" id="sidebar">
-    <a href="dashboard.php">🧿 Dashboard</a>
-    <a href="entries.php">📋 All Entries</a>
+    <a href="https://mydiary.gt.tc/dashboard/home.php">🏠 Home</a>
+    <a href="https://mydiary.gt.tc/dashboard/dashboard.php">🧿 Write Entry</a>
+    <a href="https://mydiary.gt.tc/dashboard/entries.php">📋 All Entries</a>
+    <a href="https://mydiary.gt.tc/dashboard/profile.php">👤 My Profile</a>
     <!-- <a href="#">⚙️ Settings</a>
     <a href="#">🗑️ Deleted Entries</a> -->
     <a href="../logout.php">🚪 Logout</a>
@@ -206,7 +209,7 @@ while ($row = $result->fetch_assoc()) {
     <h2 class="heading">Your Diary Entries</h2>
     <div class="entries-container">
       <?php foreach ($entries as $entry): ?>
-          <div class="entry-card" onclick="location.href='paper.php?entry_id=<?= $entry['id'] ?>'">
+          <div class="entry-card" onclick="location.href='https://mydiary.gt.tc/dashboard/paper.php?entry_id=<?= $entry['id'] ?>'">
               <div class="entry-title"><?= htmlspecialchars($entry['title']) ?></div>
               <div class="entry-meta"><?= htmlspecialchars($entry['date']) ?> | <?= htmlspecialchars($entry['time']) ?></div>
               <div class="entry-tags">

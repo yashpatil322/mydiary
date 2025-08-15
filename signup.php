@@ -1,130 +1,10 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up | My Diary</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body, html {
-      height: 100%;
-    }
-
-    .background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("imgs/evileye.jpeg") no-repeat center center/cover;
-      filter: blur(10px);
-      z-index: -1;
-    }
-
-    .container {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .signup-box {
-      background: #ffffff;
-      padding: 30px 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      width: 100%;
-      max-width: 450px;
-      color: #333;
-    }
-
-    .signup-box h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #003366; /* Evil eye dark blue */
-    }
-
-    .signup-box input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .signup-box button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      background: #003366; /* Evil eye blue */
-      color: #fff;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    
-    .login-link {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .login-link a {
-      color: var(--navy);
-      text-decoration: none;
-    }
-
-    .login-link a:hover {
-      text-decoration: underline;
-    }
-
-    .signup-box button:hover {
-      background: #002244;
-    }
-
-    @media (max-width: 600px) {
-      .signup-box {
-        padding: 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="background"></div>
-
-  <div class="container">
-    <form class="signup-box" action="php/signup.php" method="POST">
-      <h2>Sign Up</h2>
-      <input type="text" name="username" placeholder="Username" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Create Account</button>
-      <div class="login-link">
-      Already have an account? <a href="index.html">Login</a>
-    </div>
-    </form>
-  </div>
-</body>
-</html>
-
-
-  <!--another interface -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Sign Up | MyDiary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/dashboard/icon.png">
   <style>
     :root {
       --deep-blue: #1E2A78;
@@ -142,32 +22,36 @@
     }
 
     body {
-      background-image: url(imgs/evileye.jpeg);
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--beige);
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 1rem;
     }
 
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background: rgba(0,0,0,0.5); /* dark overlay */
-        z-index: -1;
-      }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0,0,0,0.5); /* dark overlay */
+      z-index: -1;
+    }
 
     .signup-container {
       background-color: var(--white);
       border: 2px solid var(--navy);
       border-radius: 12px;
       padding: 2rem;
-      width: 350px;
+      width: 100%;
+      max-width: 400px; /* Increased max-width for better desktop view */
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
@@ -179,12 +63,20 @@
 
     input[type="text"],
     input[type="email"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="file"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px; /* Increased padding for better touch targets */
       margin-bottom: 1rem;
       border: 1px solid var(--deep-blue);
       border-radius: 8px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-weight: 600;
     }
 
     button {
@@ -192,7 +84,7 @@
       background-color: var(--light-blue);
       color: var(--white);
       border: none;
-      padding: 10px;
+      padding: 12px; /* Increased padding */
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
@@ -216,16 +108,56 @@
     .login-link a:hover {
       text-decoration: underline;
     }
+
+    .small-note {
+      display: block;
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: -0.75rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .alert-box {
+      background-color: #ffcccc;
+      color: #a10000;
+      padding: 10px 15px;
+      border: 1px solid #ff5c5c;
+      border-radius: 5px;
+      text-align: center;
+      margin-bottom: 15px;
+      animation: slideIn 0.4s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 480px) {
+      .signup-container {
+        padding: 1.5rem;
+      }
+      body {
+        padding: 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="signup-container">
     <h2>Create an Account 🧿</h2>
 
-    <!-- Custom alert box -->
     <div id="alert-box" class="alert-box" style="display: none;"></div>
 
-    <form action="register.php" method="POST" class="form-container" onsubmit="return validateForm()"> 
+    <form action="https://mydiary.gt.tc/register.php" method="POST" class="form-container" onsubmit="return validateForm()" enctype="multipart/form-data"> 
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required>
 
@@ -237,12 +169,22 @@
 
       <label for="confirm_password">Confirm Password</label>
       <input type="password" id="confirm_password" name="confirm_password" required>
+      
+      <label for="auspicious_day_info">Auspicious Day (Why are you starting today?)</label>
+      <input type="text" id="auspicious_day_info" name="auspicious_day_info" required>
+      
+      <label for="profile_picture">Profile Picture</label>
+      <input type="file" id="profile_picture" name="profile_picture" required>
+
+      <label for="current_aim">Current Aim</label>
+      <input type="text" id="current_aim" name="current_aim" required>
+      <span class="small-note">(This aim cannot be changed for 1 month)</span>
 
       <button type="submit">Sign Up</button>
     </form>
 
     <div class="login-link">
-      Already have an account? <a href="loginfrontend.php">Login</a>
+      Already have an account? <a href="https://mydiary.gt.tc/loginfrontend.php">Login</a>
     </div>
   </div>
 
@@ -265,35 +207,33 @@
       const password = document.getElementById("password").value;
       const confirm = document.getElementById("confirm_password").value;
       if (password !== confirm) {
-        alert("Passwords do not match!");
+        // Using a custom alert box instead of the browser's alert()
+        const alertBox = document.getElementById('alert-box');
+        alertBox.style.display = 'block';
+        alertBox.textContent = "Passwords do not match!";
+        setTimeout(() => {
+          alertBox.style.display = 'none';
+        }, 4000);
         return false;
       }
       return true;
     }
   </script>
 
-  <style>
-    .alert-box {
-      background-color: #ffcccc;
-      color: #a10000;
-      padding: 10px 15px;
-      border: 1px solid #ff5c5c;
-      border-radius: 5px;
-      text-align: center;
-      margin-bottom: 15px;
-      animation: slideIn 0.4s ease;
-    }
+  <script>
+  const bgImages = [
+    'imgs/evileye1.jpeg',
+    'imgs/evileye2.jpeg',
+    'imgs/evileye3.jpeg',
+    'imgs/evileye4.jpeg',
+    'imgs/evileye5.jpeg',
+    'imgs/evileye6.jpeg',
+    'imgs/evileye7.jpeg',
+    'imgs/evileye8.jpeg'
+  ];
 
-    @keyframes slideIn {
-      from {
-        transform: translateY(-20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-  </style>
+  const randomIndex = Math.floor(Math.random() * bgImages.length);
+  document.body.style.backgroundImage = `url('${bgImages[randomIndex]}')`;
+</script>
 </body>
 </html>

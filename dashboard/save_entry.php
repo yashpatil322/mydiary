@@ -82,6 +82,11 @@ if (!empty($_FILES['images']['name'][0])) {
         }
     }
 }
+$update_login_query = "UPDATE users SET last_entry=NOW() WHERE username=?";
+$stmt_update_login = $conn->prepare($update_login_query);
+$stmt_update_login->bind_param("s", $username);
+$stmt_update_login->execute();
+header("Location: https://mydiary.gt.tc/dashboard/entries.php");
 header("Location: entries.php");
 exit;
     } else {

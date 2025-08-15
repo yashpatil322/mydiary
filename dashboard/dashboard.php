@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: ../loginfrontend.php?error=" . urlencode("Please log in first"));
+    header("Location: https://mydiary.gt.tc/loginfrontend.php?error=" . urlencode("Please log in first"));
     exit();
 }
 $username = $_SESSION['username'];
@@ -12,6 +12,7 @@ $username = $_SESSION['username'];
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Diary Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -307,14 +308,16 @@ $username = $_SESSION['username'];
   </div>
 
   <div class="sidebar" id="sidebar">
-    <a href="#">🧿 Dashboard</a>
-    <a href="entries.php">📋 All Entries</a>
+    <a href="/dashboard/home.php">🏠 Home</a>
+    <a href="/dashboard/dashboard.php">🧿 Write Entry</a>
+    <a href="/dashboard/entries.php">📋 All Entries</a>
+    <a href="/dashboard/profile.php">👤 My Profile</a>
     <!-- <a href="#">⚙️ Settings</a>
     <a href="#">🗑️ Deleted Entries</a> -->
-    <a href="../logout.php">🚪 Logout</a>
+    <a href="https://mydiary.gt.tc/logout.php">🚪 Logout</a>
   </div>
 
-  <form action="save_entry.php" method="POST" class="entry-form" id="diaryForm" enctype="multipart/form-data">
+  <form action="/dashboard/save_entry.php" method="POST" class="entry-form" id="diaryForm" enctype="multipart/form-data">
   <h3>Write about your day</h3>
   <textarea name="entry" placeholder="Dear Diary..." required></textarea>
   <button type="button" onclick="showFollowUps()">Save Entry</button>
