@@ -19,6 +19,30 @@ MyDiary is a secure, personal online diary web app that lets users write and sto
 - 💾 **MySQL Database Integration**
 
 ---
+---
+
+## 🆕 New Pages & Features
+
+### 🏠 Home Dashboard
+- 🧠 Daily Thought
+- 🗂️ Total Memories Count
+- 📅 New Entries This Month
+- 🔥 Current Writing Streak
+- 😊 Peak Mood Highlight
+- 🌦️ Current Weather Display
+- 🎯 Active Goal Tracker
+
+### 👤 Profile Page Enhancements
+- 📸 Profile Picture Upload
+- 📧 Email Display
+- 🕒 Started Diary At (Signup Date)
+- 🌟 Auspicious Day (set once, uneditable)
+- 📝 Last Entry Timestamp
+- 🎯 Current Aim Display
+- ✏️ “Change Aim” Button (restricted to once per month)
+
+---
+
 
 ## 🛠️ Tech Stack
 
