@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once __DIR__ . '/helpers/encryption.php';   // Inside dashboard/helpers/
-require_once __DIR__ . '/../db.php';                // One level up to root
+require_once '/helpers/encryption.php';   // Inside dashboard/helpers/
+require_once '/../db.php';                // One level up to root
 
 if (!isset($_SESSION['username'])) {
-    header("Location: https://mydiary.gt.tc/loginfrontend.php?error=" . urlencode("Please log in first"));
+    header("Location: ../loginfrontend.php?error=" . urlencode("Please log in first"));
     exit();
 }
 $username = $_SESSION['username'];
@@ -530,11 +530,11 @@ $image_src = 'data:image/jpeg;base64,' . $base64_image;
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <a href="https://mydiary.gt.tc/dashboard/home.php">🏠 Home</a>
-        <a href="https://mydiary.gt.tc/dashboard/dashboard.php">🧿 Write New Page</a>
-        <a href="https://mydiary.gt.tc/dashboard/entries.php">📋 All Entries</a>
-        <a href="https://mydiary.gt.tc/dashboard/profile.php">👤 My Profile</a>
-        <a href="https://mydiary.gt.tc/logout.php">🚪 Logout</a>
+        <a href="/dashboard/home.php">🏠 Home</a>
+        <a href="/dashboard/dashboard.php">🧿 Write New Page</a>
+        <a href="/dashboard/entries.php">📋 All Entries</a>
+        <a href="/dashboard/profile.php">👤 My Profile</a>
+        <a href="../logout.php">🚪 Logout</a>
     </div>
 
     <div class="content">
