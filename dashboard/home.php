@@ -4,7 +4,7 @@ require_once __DIR__ . '/helpers/encryption.php';   // Inside dashboard/helpers/
 require_once __DIR__ . '/../db.php';                // One level up to root
 
 if (!isset($_SESSION['username'])) {
-    header("Location: /loginfrontend.php?error=" . urlencode("Please log in first"));
+    header("Location: https://mydiary.gt.tc/loginfrontend.php?error=" . urlencode("Please log in first"));
     exit();
 }
 $username = $_SESSION['username'];
@@ -90,6 +90,7 @@ if (!empty($decryptedMoods)) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         /* Evil Eye Color Palette & General Styling */
         :root {
@@ -447,6 +448,84 @@ if (!empty($decryptedMoods)) {
             height: 2.5rem;
             stroke-width: 2.5;
         }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            /* display: flex; Use flexbox for centering */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* New Custom CSS for the Coming Soon Modal */
+        .modal-coming-soon {
+            text-align: center;
+        }
+
+        .modal-heading {
+            font-size: 1.25rem; /* Equivalent to text-xl */
+            font-weight: 600; /* Equivalent to font-semibold */
+            margin-bottom: 1rem; /* Equivalent to mb-4 */
+            color: #1f2937; /* Equivalent to text-gray-800 */
+        }
+
+        .modal-message {
+            color: #4b5563; /* Equivalent to text-gray-600 */
+        }
+        
+        .modal-ok-button {
+            margin-top: 1rem; /* Equivalent to mt-4 */
+            padding: 0.5rem 1rem; /* Equivalent to px-4 py-2 */
+            background-color: #3b82f6; /* Equivalent to bg-blue-500 */
+            color: #ffffff; /* Equivalent to text-white */
+            border-radius: 0.5rem; /* Equivalent to rounded-lg */
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Equivalent to shadow */
+            transition: background-color 0.15s ease-in-out; /* Equivalent to transition */
+        }
+
+        .modal-ok-button:hover {
+            background-color: #2563eb; /* Equivalent to hover:bg-blue-600 */
+        }
+                /* Responsive adjustments for smaller screens */
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 90%;
+                margin: 20% auto;
+                padding: 1.5rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -458,23 +537,23 @@ if (!empty($decryptedMoods)) {
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <a href="/dashboard/home.php">🏠 Home</a>
-        <a href="/dashboard/dashboard.php">✍️ Write Entry</a>
-        <a href="/dashboard/entries.php">📋 All Entries</a>
-        <a href="/dashboard/profile.php">👤 My Profile</a>
-        <a href="/logout.php">🚪 Logout</a>
+        <a href="https://mydiary.gt.tc/dashboard/home.php">🏠 Home</a>
+        <a href="https://mydiary.gt.tc/dashboard/dashboard.php">🧿 Write New Page</a>
+        <a href="https://mydiary.gt.tc/dashboard/entries.php">📋 All Entries</a>
+        <a href="https://mydiary.gt.tc/dashboard/profile.php">👤 My Profile</a>
+        <a href="https://mydiary.gt.tc/logout.php">🚪 Logout</a>
     </div>
 
     <div class="content">
         <header>
-            <h1>My Diary</h1>
+            <h1 style="color: #3b82f6;">Little Secrets 🧿</h1>
             <p>A little place for our memories.</p>
         </header>
 
         <main>
             <!-- Happy Thought Section -->
             <section class="happy-thought">
-                <p>Today is a gift, that's why it's called the present.</p>
+                <p id="daily-thought">Loading a happy thought...</p>
             </section>
 
             <!-- Stats at a Glance -->
@@ -592,23 +671,45 @@ if (!empty($decryptedMoods)) {
             <section>
                 <h2 class="section-title">A Little Inspiration</h2>
                 <div class="ideas-grid">
+
+                        <!-- Writing Prompt Card -->
+                    <!-- <a href="writing.html" class="block">
+                        <div class="idea-card">
+                            <h4>Start a New Page</h4>
+                            <p id="writing-prompt">What's one thing you're grateful for today?</p>
+                        </div>
+                    </a> -->
                     <!-- Writing Prompt Card -->
-                    <div class="idea-card">
-                        <h4>Start a New Page</h4>
-                        <p>What's one thing you're grateful for today?</p>
-                    </div>
+                    <a href="dashboard.php" style="text-decoration: none;">
+                        <div class="idea-card">
+                            <h4>Start a New Page</h4>
+                            <p id="writing-prompt">What's one thing you're grateful for today?</p>
+                        </div>
+                    </a>
                     
                     <!-- Set a Goal Card -->
-                    <div class="idea-card">
+                    <a href="profile.php" style="text-decoration: none;">
+                        <div class="idea-card">
                         <h4>My Goal</h4>
                         <p id="user-goal-text">Your goal will appear here!</p>
                     </div>
+                    </a>
 
                     <!-- Another Idea Card -->
-                    <div class="idea-card">
+                    <div class="idea-card" onclick="openSoonModal()">
                         <h4>Mood Calendar</h4>
                         <p>Visualize your moods over time with a color-coded calendar.</p>
                     </div>
+    <!-- Coming Soon Modal -->
+    <div id="coming-soon-modal" class="modal">
+        <div class="modal-content modal-coming-soon">
+            <span class="close-button" onclick="closeSoonModal()">&times;</span>
+            <h4 class="modal-heading">Coming Soon!</h4>
+            <p class="modal-message">This feature will be implemented soon. Stay tuned!</p>
+            <button onclick="closeSoonModal()" class="modal-ok-button">OK</button>
+        </div>
+    </div>
+    </div>
                 </div>
             </section>
         </main>
@@ -622,6 +723,25 @@ if (!empty($decryptedMoods)) {
     </div>
 
 <script>
+
+            // --- Writing Prompt Section Logic ---
+        function displayRandomWritingPrompt() {
+            const writingPrompts = [
+                "What's one thing you're grateful for today?",
+                "Describe a memory that makes you smile.",
+                "Write about a small act of kindness you witnessed or performed.",
+                "What's one goal you want to achieve this week?",
+                "If you could have a superpower, what would it be and why?",
+                "Write a short story about an old key you found.",
+                "What is one thing that you are proud of yourself for accomplishing recently?"
+            ];
+
+            const writingPromptElement = document.getElementById('writing-prompt');
+            const randomIndex = Math.floor(Math.random() * writingPrompts.length);
+            writingPromptElement.textContent = writingPrompts[randomIndex];
+        }
+
+
     // --- Weather Fetching Logic with Open-Meteo API ---
     async function fetchWeather(latitude, longitude) {
         // Step 1: Fetch reverse geocoding data to get the city name and full address
@@ -833,7 +953,7 @@ if (!empty($decryptedMoods)) {
 
     // --- Add a simple event listener for the buttons ---
     document.querySelector('.add-entry-btn').addEventListener('click', () => {
-        window.location.href = '/dashboard/dashboard.php';
+        window.location.href = 'https://mydiary.gt.tc/dashboard/dashboard.php';
     });
 
     // --- Sidebar toggle function ---
@@ -842,8 +962,44 @@ if (!empty($decryptedMoods)) {
         sidebar.classList.toggle("show");
     }
 
+    // --- Happy Thought Section Logic ---
+    function displayRandomHappyThought() {
+        const happyThoughts = [
+            "Today is a gift, that's why it's called the present.",
+            "The best way to predict the future is to create it.",
+            "Happiness is a journey, not a destination.",
+            "The only time you should look back is to see how far you've come.",
+            "Believe you can and you're halfway there.",
+            "The best is yet to come.",
+            "Be the reason someone smiles today.",
+            "What you think, you become. What you feel, you attract. What you imagine, you create."
+        ];
+
+        // Get the paragraph element by its ID
+        const dailyThoughtElement = document.getElementById('daily-thought');
+
+        // Generate a random index number
+        const randomIndex = Math.floor(Math.random() * happyThoughts.length);
+
+        // Set the text content of the paragraph to a random thought from the array
+        dailyThoughtElement.textContent = happyThoughts[randomIndex];
+    }
+
+        // --- Coming Soon Modal Logic (New) ---
+        function openSoonModal() {
+            document.getElementById('coming-soon-modal').style.display = 'flex';
+        }
+        function closeSoonModal() {
+            document.getElementById('coming-soon-modal').style.display = 'none';
+        }
+
+
     // --- Start the process on page load ---
-    window.onload = getLocationAndWeather;
+    window.addEventListener('load', () => {
+        getLocationAndWeather();
+        displayRandomHappyThought();
+        displayRandomWritingPrompt();
+    });
 </script>
 </body>
 </html>
