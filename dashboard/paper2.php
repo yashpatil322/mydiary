@@ -1,8 +1,8 @@
 <?php
 // paper2.php (top section)
 session_start();
-require_once __DIR__ . '/helpers/encryption.php';   // Inside dashboard/helpers/
-require_once __DIR__ . '/../db.php';                // One level up to root
+require_once 'helpers/encryption.php';
+require_once '../db.php';
 
 $username = $_SESSION['username'] ?? null;
 $entryId = $_GET['entry_id'] ?? null;
@@ -49,7 +49,6 @@ $images[] = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="icon.png">
     <style>
         /* General Styles */
         body {
@@ -160,7 +159,6 @@ $images[] = [
             .btn {
                 padding: 6px 10px; /* Smaller buttons on small screens */
                 font-size: 0.8em;
-                text-decoration: none;
             }
         }
     </style>
@@ -171,7 +169,7 @@ $images[] = [
             <div class="controls">
                 <button class="btn" onclick="changeBg()">🎨 BG</button>
                 <button class="btn" onclick="save()">💾 Save</button>
-                <button class="btn";"><a href="https://mydiary.gt.tc/dashboard/paper.php?entry_id=<?php echo $entryId; ?>" style="text-decoration: none;">Go 🔙</a></button>
+                <button class="btn"><a href="paper.php?entry_id=<?php echo $entryId; ?>" style="text-decoration: none;">Go 🔙</a></button>
             </div>
             <canvas id="canvas"></canvas>
         </div>
