@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: https://mydiary.gt.tc/loginfrontend.php?error=" . urlencode("Please log in first"));
+    header("Location: ../loginfrontend.php?error=" . urlencode("Please log in first"));
     exit();
 }
 
-require_once __DIR__ . '/helpers/encryption.php'; // Inside dashboard/helpers/
-require_once __DIR__ . '/../db.php'; // One level up to root
+require_once '/helpers/encryption.php'; // Inside dashboard/helpers/
+require_once '/../db.php'; // One level up to root
 
 $username = $_SESSION['username'];
 $entryId = isset($_GET['entry_id']) ? intval($_GET['entry_id']) : 0;
@@ -197,12 +197,12 @@ $entryTime = $row['entry_time'];
 
   <!-- Button Container -->
   <div class="button-container">
-    <a href="https://mydiary.gt.tc/dashboard/paper2.php?entry_id=<?php echo $entryId; ?>">
+    <a href="/dashboard/paper2.php?entry_id=<?php echo $entryId; ?>">
       <button class="button-style">
         ✨ View Collage
       </button>
     </a>
-    <a href="https://mydiary.gt.tc/dashboard/entries.php">
+    <a href="/dashboard/entries.php">
       <button class="button-style">
          ✒️ View Entries
       </button>
