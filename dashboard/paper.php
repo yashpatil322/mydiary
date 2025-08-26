@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header('Location: ../login.php');
+    header("Location: https://mydiary.gt.tc/loginfrontend.php?error=" . urlencode("Please log in first"));
     exit();
 }
 
-require_once 'helpers/encryption.php';
-require_once '../db.php';
+require_once __DIR__ . '/helpers/encryption.php'; // Inside dashboard/helpers/
+require_once __DIR__ . '/../db.php'; // One level up to root
 
 $username = $_SESSION['username'];
 $entryId = isset($_GET['entry_id']) ? intval($_GET['entry_id']) : 0;
@@ -44,6 +44,7 @@ $entryTime = $row['entry_time'];
 <head>
   <meta charset="UTF-8">
   <title>Your Diary Entries</title>
+  <link rel="icon" type="image/x-icon" href="icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto&display=swap" rel="stylesheet">
@@ -51,7 +52,7 @@ $entryTime = $row['entry_time'];
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0;``
+      padding: 0;
     }
 
     body {
@@ -89,10 +90,12 @@ $entryTime = $row['entry_time'];
     .entry-text {
       font-size: 5vw;
       line-height: 1.7;
-      font-family: 'Indie Flower', cursive;
+      font-family: 'Indie Flower',cursive;
       color: #3f3f3f;
       white-space: pre-wrap;
       margin-bottom: 4vw;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
 
     .entry-tags {
@@ -105,32 +108,79 @@ $entryTime = $row['entry_time'];
       margin-bottom: 2vw;
     }
 
+    /* Responsive adjustments for larger screens (PC) */
     @media (min-width: 768px) {
-      body {
-        padding: 40px;
+       body {
+         padding: 40px;
+       }
+
+      .entry-card {
+         padding: 40px; /* Adjust padding for desktop */
       }
 
       .entry-title {
-        font-size: 2.2rem;
+        font-size: 2.2rem; /* Use a fixed rem size for desktop */
+        margin-bottom: 1.5rem; /* Adjust margin for desktop */
       }
 
-      .entry-meta {
-        font-size: 1rem;
+    .entry-meta {
+       font-size: 1rem;
+       margin-bottom: 2rem;
       }
 
       .entry-text {
         font-size: 1.3rem;
-      }
+        margin-bottom: 2rem;
+       }
 
       .entry-tags {
-        font-size: 1.2rem;
+         font-size: 1.2rem;
       }
 
       .entry-tags div {
-        margin-bottom: 10px;
+       margin-bottom: 10px;
       }
     }
-  </style>
+
+/* Styling for the buttons to make them responsive */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .button-container {
+        flex-direction: row;
+        gap: 20px;
+       }
+    }
+
+    .button-style {
+      padding: 12px 24px;
+      background-color: #653affff;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: 'Indie Flower', cursive;
+      text-decoration: none; /* Remove underline from anchor tag */
+      margin-bottom: 10px; /* Spacing between buttons on mobile */
+      display: flex; /* Make anchor tags behave like block elements */
+      margin-right: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .button-style {
+        margin-bottom: 0; /* Remove mobile spacing */
+      }
+    }
+    .button-container a{
+      text-decoration: none;
+    }
+</style>
 </head>
 <body>
   <div class="entry-card">
@@ -138,46 +188,25 @@ $entryTime = $row['entry_time'];
     <div class="entry-meta">Date: <?php echo htmlspecialchars($entryDate); ?> | Time: <?php echo htmlspecialchars($entryTime); ?></div>
     <div class="entry-text"><?php echo nl2br(htmlspecialchars($decryptedEntry)); ?></div>
     <div class="entry-tags">
-      <div><?php echo htmlspecialchars($decryptedMood); ?></div>
-      <div><?php echo htmlspecialchars($decryptedWeather); ?></div>
-      <div><?php echo htmlspecialchars($decryptedEnergy); ?></div>
-      <div><?php echo htmlspecialchars($decryptedSocial); ?></div>
+       <div>Mood: <?php echo htmlspecialchars($decryptedMood); ?></div>
+      <div>Weather: <?php echo htmlspecialchars($decryptedWeather); ?></div>
+      <div>Energy: <?php echo htmlspecialchars($decryptedEnergy); ?></div>
+      <div>Social: <?php echo htmlspecialchars($decryptedSocial); ?></div>
     </div>
   </div>
-<!-- redirecting button!! -->
-  <div style="text-align: center; margin-top: 30px;">
-    <a href="paper2.php?entry_id=<?php echo $entryId; ?>">
-      <button style="
-        padding: 12px 24px;
-        background-color: #653affff;
-        color: white;
-        font-size: 1rem;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-family: 'Indie Flower', cursive;
-      ">
+
+  <!-- Button Container -->
+  <div class="button-container">
+    <a href="https://mydiary.gt.tc/dashboard/paper2.php?entry_id=<?php echo $entryId; ?>">
+      <button class="button-style">
         ✨ View Collage
       </button>
     </a>
-  </div>
-  <!-- back to entries button -->
-    <div style="text-align: center; margin-top: 30px;">
-    <a href="entries.php">
-      <button style="
-        padding: 12px 24px;
-        background-color: #653affff;
-        color: white;
-        font-size: 1rem;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-family: 'Indie Flower', cursive;
-      ">
-        ✒️ View Entries
+    <a href="https://mydiary.gt.tc/dashboard/entries.php">
+      <button class="button-style">
+         ✒️ View Entries
       </button>
     </a>
   </div>
-
 </body>
 </html>
