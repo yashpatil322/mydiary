@@ -531,7 +531,7 @@ $image_src = 'data:image/jpeg;base64,' . $base64_image;
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <a href="https://mydiary.gt.tc/dashboard/home.php">🏠 Home</a>
-        <a href="https://mydiary.gt.tc/dashboard/dashboard.php">✍️ Write Entry</a>
+        <a href="https://mydiary.gt.tc/dashboard/dashboard.php">🧿 Write New Page</a>
         <a href="https://mydiary.gt.tc/dashboard/entries.php">📋 All Entries</a>
         <a href="https://mydiary.gt.tc/dashboard/profile.php">👤 My Profile</a>
         <a href="https://mydiary.gt.tc/logout.php">🚪 Logout</a>
@@ -575,7 +575,7 @@ $image_src = 'data:image/jpeg;base64,' . $base64_image;
                             </svg>
                             <span class="label">Email</span>
                         </div>
-                        <h3 id="user-email">Loading...</h3>
+                        <h4 id="user-email">Loading...</h4>
                     </div>
 
                     <!-- Started Diary At Card -->
