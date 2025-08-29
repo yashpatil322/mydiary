@@ -12,6 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error); // Stop script if failed
 }
 else{
+    //to match the time with our indian time
     $conn->query("SET time_zone = '+05:30'");
 }
 ?>
