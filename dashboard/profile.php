@@ -790,7 +790,6 @@ document.getElementById('profile-pic-input').addEventListener('change', async fu
         lastAimChange: "<?php echo $last_aim_change_date ?>" // YYYY-MM-DD format for the date check
     };
 
-    // --- Inject Dummy Data into the HTML ---
     document.getElementById('user-profile-name').textContent = dummyData.username;
     document.getElementById('username-text').textContent = dummyData.username;
     document.getElementById('user-email').textContent = dummyData.email;
