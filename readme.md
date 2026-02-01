@@ -1,4 +1,4 @@
-# 📔 MyDiary — Encrypted Online Diary Web App
+no# 📔 MyDiary — Encrypted Online Diary Web App
 
 MyDiary is a secure, personal online diary web app that lets users write and store their daily entries with **end-to-end encryption**. It features a clean, responsive UI, mood and day tagging, and optional image uploads for creating memory collages.
 
@@ -6,7 +6,7 @@ MyDiary is a secure, personal online diary web app that lets users write and sto
 
 ---
 
-## ✨ Features
+## ✨ Features 
 
 - 🔒 **Secure Authentication** (Signup & Login)
 - 📝 **Diary Entry Creation** with:
